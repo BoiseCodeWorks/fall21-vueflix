@@ -1,0 +1,86 @@
+{
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.iconTheme": "vscode-icons",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "files.exclude": {
+    "**/.nyc_*": true,
+    "**/bin": true,
+    "**/coverage": true,
+    "**/node_modules": true,
+    "**/obj": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDragAndDrop": false,
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll.eslint",
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "eslint.nodePath": "C:\\Program Files\\nodejs",
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "explorer.confirmDelete": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "diffEditor.wordWrap": "on",
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true,
+  "window.zoomLevel": 2,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "javascript": false,
+    "sql": true
+  },
+  "git.pruneOnFetch": true,
+  "editor.tabSize": 2,
+  "typescript.locale": "en",
+  "html.trace.server": "messages",
+  "typescript.preferences.quoteStyle": "single",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "emmet.includeLanguages": {
+    "javascript": "html",
+    "vue-html": "html"
+  },
+  "editor.tabCompletion": "on",
+  "editor.quickSuggestions": true,
+  "editor.bracketPairColorization.enabled": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "files.associations": {
+    "*.vue": "vue"
+  }
+}
