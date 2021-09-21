@@ -14,8 +14,8 @@
       </button>
     </div>
   </form>
-  <div v-if="currentPage > 0 && totalPages > 0">
-    <button v-for="page in totalPages" :key="page" @click="getPage(page)">
+  <div v-if="currentPage > 0 && totalPages > 0 && query" class="my-2">
+    <button class="btn bg-dark me-1 selectable text-white" v-for="page in totalPages" :key="page" @click="getPage(page)">
       {{ page }}
     </button>
   </div>

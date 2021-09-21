@@ -5,15 +5,17 @@
         <MovieFinder />
       </div>
     </div>
-    <div class="row result-controls" @contextmenu.prevent>
-      <button class="btn" @click="toggleAscending">
-        <i class="mdi mdi-arrow-up" v-if="ascending"></i>
-        <i class="mdi mdi-arrow-down" v-else></i>
+    <div class="row result-controls" @contextmenu.prevent v-if="movies.length">
+      <div class="col bg-dark">
+        <button class="btn selectable me-2 text-white" @click="toggleAscending">
+          <i class="mdi mdi-arrow-up" v-if="ascending"></i>
+          <i class="mdi mdi-arrow-down" v-else></i>
         <!-- <i class="mdi" :class="ascending ? 'mdi-arrow-up' : 'mdi-arrow-down'"></i> -->
-      </button>
-      <button @click="lowFilter = !lowFilter">
-        filter out lower than 45
-      </button>
+        </button>
+        <button class="btn text-uppercase text-white selectable" @click="lowFilter = !lowFilter">
+          filter terrible movies
+        </button>
+      </div>
     </div>
     <div class="row movies">
       <div class="col-lg-4" v-for="m in movies" :key="m.id">
