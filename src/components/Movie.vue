@@ -1,6 +1,14 @@
 <template>
   <div class="card">
-    <img :src="movie.img" alt="" class="rounded pt-2">
+    <div class="position-absolute" style="right: 0">
+      <button class="btn selectable text-secondary text-uppercase" @click="addToWatchlist(movie)" v-if="!onMyList" title="add to favorites">
+        <i class="mdi mdi-star-outline f-24"></i>
+      </button>
+      <button class="btn square-left square-bottom btn-warning" @click="remove(movie)" v-else title="remove from favorties">
+        <i class="mdi mdi-star f-24"></i>
+      </button>
+    </div>
+    <img :src="movie.img" alt="" class="rounded-top movie-img" loading="lazy">
     <div class="card-body">
       <div class="">
         <h3 class="d-flex align-items-center justify-content-between">
@@ -10,16 +18,33 @@
         <p class="clip-text">
           {{ movie.overview }}
         </p>
-        <div>
-          <button class="btn btn-success" @click="addToWatchlist(movie)" v-if="!onMyList">
-            Add
-          </button>
-          <button class="btn btn-danger" @click="remove(movie)" v-else>
-            remove
+        <div class="text-center">
+          <button type="button" class="btn selectable text-secondary text-uppercase" data-bs-toggle="modal" :data-bs-target="'#m-'+movie.id" title="more details">
+            <i class="mdi mdi-chevron-up f-20"></i>
           </button>
         </div>
       </div>
     </div>
+    <Modal :id="'m-'+movie.id">
+      <template #modal-title>
+        {{ movie.title }}
+      </template>
+      <template #modal-body>
+        <div class="text-center">
+          <img :src="movie.img" alt="">
+        </div>
+        <div class="row py-3">
+          <div class="col-md-6 d-flex align-items-center">
+            <p>
+              {{ movie.overview }}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img :src="movie.poster2" alt="movie poster" class="img-fluid">
+          </div>
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -47,11 +72,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img{
-  object-fit: contain;
-  object-position: center;
-  height: 250px;
-  width: 250px;
+.movie-img{
+  object-fit: cover;
+  object-position: center top;
+  max-height: 450px;
 }
 
 </style>
