@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="position-absolute" style="right: 0">
-      <button class="btn selectable text-secondary text-uppercase" @click="addToWatchlist(movie)" v-if="!onMyList" title="add to favorites">
+      <button class="btn selectable text-secondary text-uppercase bg-dark bg-faded" @click="addToWatchlist(movie)" v-if="!onMyList" title="add to favorites">
         <i class="mdi mdi-star-outline f-24"></i>
       </button>
       <button class="btn square-left square-bottom btn-warning" @click="remove(movie)" v-else title="remove from favorties">
@@ -77,5 +77,4 @@ export default {
   object-position: center top;
   max-height: 450px;
 }
-
 </style>

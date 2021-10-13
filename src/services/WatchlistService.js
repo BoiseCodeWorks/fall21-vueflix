@@ -2,6 +2,14 @@ import { AppState } from '../AppState.js'
 import Pop from '../utils/Pop.js'
 
 class WatchlistService {
+  constructor() {
+    AppState.watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
+  }
+
+  saveWatchlist() {
+    localStorage.setItem('watchlist', JSON.stringify(AppState.watchlist))
+  }
+
   async addMovie(movie) {
     const found = AppState.watchlist.find(m => m.id === movie.id)
     if (found) {
@@ -13,6 +21,7 @@ class WatchlistService {
       if (!yes) { return }
     }
     AppState.watchlist.push(movie)
+    this.saveWatchlist()
     Pop.toast(`Added ${movie.title} to your watchlist`, 'success')
   }
 
@@ -25,6 +34,7 @@ class WatchlistService {
       return
     }
     AppState.watchlist.splice(i, 1)
+    this.saveWatchlist()
     Pop.toast(`removed ${movie.title}`, 'success')
   }
 }
