@@ -1,3 +1,24 @@
+@function color-yiq($background) {
+  $r: red($background);
+  $g: green($background);
+  $b: blue($background);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114))/1000;
+
+  @if ($yiq >= 128) {
+    @return #111;
+  } @else {
+    @return #fff;
+  }
+}
+
+@function fade($background, $alpha) {
+  $r: red($background);
+  $g: green($background);
+  $b: blue($background);
+  @return rgba($r, $g, $b, $alpha);
+}
+
 @each $color, $value in $colors {
   .bg-#{$color} {
     color: color-yiq($value);
@@ -6,38 +27,37 @@
   .text-#{$color} {
     color: $value !important;
   }
-}
-
-@each $color, $value in $colors {
-  @each $num, $val in $color-ranges {
-    .bg-#{$color}.darken-#{$num} {
-      color: color-yiq(darken($value, $num));
-      background-color: darken($value, $num) !important;
+  $num: 5;
+  @while $num < 100 {
+    $darker: darken($value, $num);
+    $lighter: lighten($value, $num);
+    .bg-#{$color} {
+      &.lighten-#{$num} {
+        color: color-yiq($lighter);
+        background-color: $lighter !important;
+      }
+      &.darken-#{$num} {
+        color: color-yiq($darker);
+        background-color: $darker !important;
+      }
+      &.fade-#{$num} {
+        background-color: fade($value, $num / 100) !important;
+      }
+      &.fade-lighten-#{$num} {
+        background-color: fade($lighter, $num / 100) !important;
+      }
+      &.fade-darken-#{$num} {
+        background-color: fade($darker, $num / 100) !important;
+      }
     }
     .text-#{$color}.darken-#{$num} {
-      color: darken($value, $num) !important;
+      color: $darker !important;
     }
-    .bg-#{$color}.lighten-#{$num} {
-      color: color-yiq(lighten($value, $num));
-      background-color: lighten($value, $num) !important;
-    }
+
     .text-#{$color}.lighten-#{$num} {
-      color: lighten($value, $num) !important;
+      color: $lighter !important;
     }
-    .bg-#{$color}.darken-#{$num}0 {
-      color: color-yiq(darken($value, $num * 0.25));
-      background-color: darken($value, $num * 0.25) !important;
-    }
-    .text-#{$color}.darken-#{$num}0 {
-      color: darken($value, $num * 0.25) !important;
-    }
-    .bg-#{$color}.lighten-#{$num}0 {
-      color: color-yiq(lighten($value, $num * 0.25));
-      background-color: lighten($value, $num * 0.25) !important;
-    }
-    .text-#{$color}.lighten-#{$num}0 {
-      color: lighten($value, $num * 0.25) !important;
-    }
+    $num: $num + 5;
   }
 }
 
