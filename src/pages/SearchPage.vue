@@ -20,7 +20,7 @@
     <div class="row movies">
       <div class="col-lg-4" v-for="m in movies" :key="m.id">
         <!-- REVIEW PROPS -->
-        <Movie :movie="m" class="my-2" />
+        <Movie :movie="m" class="my-2 elevation-2" />
         <!-- movies.forEach(m => Movie(m)) -->
       </div>
     </div>
